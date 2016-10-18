@@ -31,7 +31,7 @@ function callbackHandler($data)
                 $result = pay( $params );
                 break;
             case 'error':
-                $result = $this->error( $params );
+                $result = error( $params );
                 break;
             default:
                 $result = array('error' =>
