@@ -134,6 +134,10 @@ function verifySignature($params, $method)
     $order_id = $params['account'];
     $order_info = fn_get_order_info($order_id);
 
+    if (is_null($order_info)) {
+        return false;
+    }
+
     if (empty($processor_data)) {
         $processor_data = fn_get_processor_data($order_info['payment_id']);
     }
