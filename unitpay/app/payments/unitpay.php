@@ -20,6 +20,14 @@ $data = array(
     'signature' => $signature
 );
 
+if (isset($order_info['email'])) {
+    $data['customerEmail'] = $order_info['email'];
+}
+
+if (isset($order_info['phone'])) {
+    $data['customerPhone'] = preg_replace('/\D/', '', $order_info['phone']);
+}
+
 fn_change_order_status($order_id, 'O');
 
 fn_create_payment_form($payment_url, $data, 'Unitpay', false);
